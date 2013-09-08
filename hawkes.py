@@ -32,9 +32,8 @@ residuals = pandas.read_csv('./data/residuals.csv', index_col=0)
 # 
 empirical_1min = usd_counts.resample('1min', how='sum')
 
-### read in fitted data from R
-#fitted = pandas.read_csv('./fitted_intensities.csv', index_col=0)
-fitted = pandas.read_csv('./fitted_intensities_actual_times.csv', index_col=0)
+### read in fitted data from R and adjust index
+fitted = pandas.read_csv('./data/fitted_intensities_actual_times_large.csv', index_col=0)
 index = map(lambda x: datetime.datetime.fromtimestamp(float(x)-3600), fitted.index)
 fitted.index = index
 
