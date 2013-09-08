@@ -21,15 +21,17 @@ f <- fit(0.5, trade_times)
 #> min(trade_times)
 #[1] 1366463464.6084
 
-x <- seq(1366463464, 1366487824, len=15000)
-actual_times <- trade_times
+# evaluation of intensity over the given timeframe. 
+x <- seq(1366463464, 1366487824, len=20000)
 e <- evalCIF(f, xpts = x)
-plot(x, e, type = "l", xlab = "Times", ylab = "Conditional intensity (events / minute)")
+
+# this has to get integrated over 1 minute intervals to match up to empirical counts
+plot(x, e, type = "l", xlab = "Times", ylab = "Conditional intensity (events / second)")
 
 
 # write to file for python to read
-out <- data.frame(index=actual_index, data=e)
-write.csv(out, './fitted_intensities_actual_times.csv', row.names=FALSE)
+out <- data.frame(index=x, data=e)
+write.csv(out, './fitted_intensities_actual_times_large.csv', row.names=FALSE)
 
 ## residuals
 res <- residuals(f, type = "approx", K = 350)
