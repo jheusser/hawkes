@@ -44,6 +44,7 @@ pandas.DataFrame({'fitted': fitted_1min.data.values, 'empirical': empirical_1min
 
 ## plot settings
 import matplotlib as mpl
+import matplotlib.pyplot as plt
 mpl.rc('font', **{'sans-serif':'Verdana','family':'sans-serif','size':8})
 mpl.rcParams['xtick.direction'] = 'out'
 mpl.rcParams['ytick.direction'] = 'out'
@@ -84,7 +85,7 @@ ax.set_xlabel('Time')
 ax.set_title('Fitted vs Empirical Intensities')
 
 plt.draw()
-
+plt.show()
 
 ## QQ plot of residuals
 import scipy.stats as stats
@@ -94,4 +95,4 @@ ax = plt.axes()
 ax.set_title('Residual Interevent Times')
 
 plt.draw()
-
+plt.show()
